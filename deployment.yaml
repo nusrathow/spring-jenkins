@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: spring-jenkins
+spec:
+  selector:
+    matchLabels:
+      app: spring-jenkins
+  replicas: 1 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: spring-jenkins
+    spec:
+      containers:
+        - name: one
+          image: docker.io/nusratjahan66/spring-jenkins]  # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8284 # The port that the container is running on in the cluster
